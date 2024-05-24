@@ -1,0 +1,5 @@
+Buat,ubah,dan hapus data acara (nama acara,tanggal,waktu,lokasi,deskripsi,dll.).
+Cari acara berdasarkan nama,tanggal,atau kategori.
+Tampilkan daftar acara yang akan datang atau acara yang telah berlalu.
+
+Feature:

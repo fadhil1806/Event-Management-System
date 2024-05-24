@@ -1,0 +1,52 @@
+@import url('bootstrap.min.css');
+@import url('bootstrap-icons.min.css');
+@import url('animate.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata&display=swap');
+
+.form-container {
+     animation: fadeInUp 2s ease-in-out;
+}
+
+form h4 {
+    font-family: 'Inconsolata', monospace;
+    font-size: 30px;
+    color: #495057;
+}
+
+.form-control {
+    border: 1px solid #ced4da;
+}
+
+.form-control:focus {
+    border-color: #6cb2eb;
+    box-shadow: none;
+}
+
+.input-group button {
+    background-color: transparent;
+    border: none;
+}
+.input-group button:focus {
+    outline: none;
+}
+
+.btn-primary {
+    background-color: #6cb2eb;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #5a9cdb;
+}
+._ab21 {
+     color: #495057;
+}
+
+._ab21 a {
+    color: #6cb2eb;
+}
+
+._ab21 a:hover {
+    text-decoration: underline;
+}
+

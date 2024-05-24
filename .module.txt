@@ -1,0 +1,3 @@
+npm i express sequelize dotenv express-validator bcrypt
+
+https://express-validator.github.io/docs/guides/manually-running

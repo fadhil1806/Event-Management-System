@@ -1,0 +1,28 @@
+http://localhost:3000/api/guru/create -> untuk register akun guru;
+method: post,
+req.body: {
+    "name": "M. Dzikri Fauzan",
+    "username": "dzikri.f",
+    "password": "dzikri123"
+}
+
+*notes express-validator tidak berfungsi
+*notes beralih ke validator
+
+--
+http://localhost:3000/api/guru -> untuk ngambil data guru
+method: GET
+
+
+http://localhost:3000/auth/login -> untuk login (sahrul)
+method: POST,
+body: {
+    "username": "",
+    "password": ""
+}
+
+*notes kalau ngambil username harus ada, kalau ga ada return responseHelpers(res, 400, {message: 'username not found'})
+
+
+
+http://localhost:3000/api/data/event?end_date=2024-12-01T00:00:00.000Z&category=Web development&start_date=2020-08-10T00:00:00.000Z&name=w
