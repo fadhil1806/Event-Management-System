@@ -4,12 +4,13 @@ create table guru (
     id varchar(30) primary key not null,
     name varchar(60) not null,
     username varchar(20) not null,
-    password varchar(20) not null,
+    password VARCHAR(100) not null,
     createdAt timestamp default current_timestamp,
     updatedAt timestamp default current_timestamp on update current_timestamp
 );
 
 create table category (
+    id int not null,
     name varchar(30) not null primary key,
     createdAt timestamp default current_timestamp,
     updatedAt timestamp default current_timestamp on update current_timestamp
@@ -31,10 +32,6 @@ CREATE TABLE event (
     FOREIGN KEY (guru_id) REFERENCES guru(id),
     FOREIGN KEY (category) REFERENCES category(name)
 );
-
-
-ALTER TABLE guru
-MODIFY COLUMN password VARCHAR(100);
 
 
 Diagram db

@@ -1,3 +1,4 @@
+//Guru
 http://localhost:3000/api/guru/create -> untuk register akun guru;
 method: post,
 req.body: {
@@ -6,10 +7,6 @@ req.body: {
     "password": "dzikri123"
 }
 
-*notes express-validator tidak berfungsi
-*notes beralih ke validator
-
---
 http://localhost:3000/api/guru -> untuk ngambil data guru
 method: GET
 
@@ -21,8 +18,42 @@ body: {
     "password": ""
 }
 
-*notes kalau ngambil username harus ada, kalau ga ada return responseHelpers(res, 400, {message: 'username not found'})
+
+//event
+http://localhost:3000/api/data/event/create -> untuk membuat data baru di tabel event
+method: POST,
+body: {
+    "name": "Workshop self development",
+    "description": "Bagaimana untuk menjadi seorang yang kreatif",
+    "category": "self improvement",
+    "event_date": "2024-09-12",
+    "location": "Bandung",
+    "max_participant": 70,
+    "status": "offline",
+    "email": "contact@selfworkshop.com"
+}
+
+http://localhost:3000/api/data/event/update/ID_EVENT -> untuk Mengubah data event sesuai dengan id
+
+http://localhost:3000/api/data/event/delete/ID_EVENT -> untuk Menghapus data event sesuai dengan id
+
+untuk mendapatkan data event dengan 4 filter (nama, category, acara yang akan datang, dan acara yang telah berlalu);
+http://localhost:3000/api/data/event?end_date=2024-09-01T00:00:00.000Z&category=Web development&start_date=2020-08-10T00:00:00.000Z&name=ai
 
 
 
-http://localhost:3000/api/data/event?end_date=2024-12-01T00:00:00.000Z&category=Web development&start_date=2020-08-10T00:00:00.000Z&name=w
+//Category
+http://localhost:3000/api/category -> Menampilkan data category
+
+http://localhost:3000/api/category/create -> Membuat data baru di tabel category
+METHOD: POST,
+{
+    "name": "..."
+}
+
+http://localhost:3000/api/category/update/ID_CATEGORY -> Mengubah data sesuai id dari tabel category
+{
+    "name": "..."
+}
+
+http://localhost:3000/api/category/delete/ID_CATEGORY -> Menghapus data sesuai id dari tabel category
