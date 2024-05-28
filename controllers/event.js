@@ -12,23 +12,35 @@ async function getDataEvent(req, res) {
         const whereQuery = {};
 
         //add symbol >= pada event_date
-        if (start_date) whereQuery.event_date = { [Op.gte]: new Date(start_date) };
+        if (start_date) whereQuery.event_date = { [Op.gte]: new Date(start_date + 'T00:00:00.000Z') };
+
+        //jika tidak menggunakan filter start_date, maka otomatis akan menambahkan filter sesuai dengan >= hari ini
+        const today = new Date()
+        // if (!start_date) whereQuery.event_date = { [Op.gte]: today}
 
         //add symbol <= pada event_date
         if (end_date) whereQuery.event_date = { 
             ...whereQuery.event_date, 
-            [Op.lte]: new Date(end_date) 
+            [Op.lte]: new Date(end_date + 'T00:00:00.000Z') 
         };
 
         //like in sequelize
         if (name) whereQuery.name = { [Op.like]: `%${name}%` };
 
         if (category) whereQuery.category = category;
-    
-        console.log(whereQuery)
+
         const data = await event.findAll({
-            where: whereQuery
+            where: whereQuery,
+            attributes: {exclude: ['guru_id', 'createdAt', 'updatedAt']}
         });
+
+        if(data.length == 0) return responseHelpers(res, 404, {message: 'not found acara available'})
+
+        //tambahkan object statusPendaftaran true jika >= hari ini, dan false jika sudah berlalu
+        data.forEach(index => {
+            if(index.dataValues.event_date >= today) index.dataValues.statusPendaftran = true
+            else index.dataValues.statusPendaftran = false
+        })
         
         return responseHelpers(res, 200, data);
     } catch (error) {

@@ -24,6 +24,7 @@ async function registerGuru(req, res) {
     try {
         //check username of database
         const existingUsername = await getDataGuruByUsername(username) 
+        
         if(existingUsername !== null) return responseHelpers(res, 409, {message: 'username already exist'})
 
         //hash and generateID
