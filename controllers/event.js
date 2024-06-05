@@ -1,5 +1,5 @@
 const { Op } = require("sequelize");
-const event = require("../db/tables/event");
+const event = require('../models/event');
 const generateId = require("../helpers/generateId");
 const responseHelpers = require("../helpers/responseHelper");
 
@@ -98,6 +98,9 @@ async function deleteEvent(req, res) {
     if(isValidData == null) return responseHelpers(res, 404, { message: 'Event not found' });
 
     try {
+        if(isValidData.dataValues.id != req.data.id) return responseHelpers(res, 422, {message: 'not access for deleted data'});
+        console.log(isValidData.dataValues)
+        console.log(id)
         await event.destroy({
             where: {id}
         });

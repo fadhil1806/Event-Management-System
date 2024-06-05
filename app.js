@@ -21,4 +21,3 @@ app.use('/api/category', categoryRouter);
 
 
 app.listen(3000, () => console.log('Server running'))
-// module.exports = app;

@@ -1,6 +1,6 @@
 const responseHelpers = require("../helpers/responseHelper");
-const { getDataGuruByUsername } = require("../models/guru");
-const guru = require("../db/tables/guru");
+const { getDataGuruByUsername } = require("../getData/guru");
+const guru = require('../models/guru');
 const generateId = require("../helpers/generateId");
 const { hashPassword, comparePassword } = require("../helpers/hash");
 const generateToken = require("../helpers/generateToken");

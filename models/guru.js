@@ -1,30 +1,28 @@
-const guru = require("../db/tables/guru")
+// models/guru.js
+const { DataTypes } = require('sequelize');
+const sequelize = require('../config/sequelize');
 
-async function getDataGuruByUsername(username) {
-    try {
-        const dataGuru = await guru.findOne({
-            where: {username},
-            attributes: {exclude: ['createdAt', 'updatedAt']}
-        })
-        return dataGuru
-    }
-    catch(error) {
+const Guru = sequelize.define('Guru', {
+  id: {
+    type: DataTypes.STRING,
+    primaryKey: true,
+    allowNull: false
+  },
+  name: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  username: {
+    type: DataTypes.STRING,
+    allowNull: false
+  },
+  password: {
+    type: DataTypes.STRING,
+    allowNull: false
+  }
+}, {
+    tableName: 'guru',
+    freezeTableName: true
+});
 
-    }
-}
-
-async function getDataGuruByID(id) {
-    try{
-        const dataGuru = await guru.findOne({
-            where: {id},
-            attributes: {exclude: ['createdAt', 'updatedAt']}
-        })
-        return dataGuru
- 
-    }
-    catch(error){
-
-    }
-}
-
-module.exports = {getDataGuruByUsername, getDataGuruByID}
+module.exports = Guru;
