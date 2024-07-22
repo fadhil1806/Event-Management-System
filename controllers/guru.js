@@ -7,7 +7,6 @@ const generateToken = require("../helpers/generateToken");
 
 async function getDataGuru(req, res) {
     try {
-        //get data tetapi tidak ngambil password, createdAt, updatedAt
         const data = await guru.findAll({
             attributes: {exclude: ['password', 'createdAt', 'updatedAt']}
         })
@@ -16,10 +15,10 @@ async function getDataGuru(req, res) {
     catch {
         return responseHelpers(res, 500, {message: 'Internal server error'});
     }
-
 }
+
 async function registerGuru(req, res) {
-    const { name, username, password } = req.body;
+    const { name, username, password } = req.body
 
     try {
         //check username of database
@@ -60,8 +59,6 @@ async function loginGuru(req, res) {
         const token = await generateToken(dataGuru.dataValues)
     
         return responseHelpers(res, 200, {status: true, token})
-        
-
     }
     catch(error) {
         console.log(error)

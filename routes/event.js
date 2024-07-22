@@ -16,10 +16,9 @@ const validations = [
     body("email").notEmpty().isEmail().withMessage("email is required")
 ]
 
-// router.post('/create', addEvent)
 router.get('/', getDataEvent)
-router.post('/create', authentication, validate(validations), addEvent);
-router.put('/update/:id', authentication, validate(validations), updatedEvent);
+router.post('/create', authentication, validate(validations), addEvent)
+router.put('/update/:id', authentication, validate(validations), updatedEvent)
 router.delete('/delete/:id', authentication, deleteEvent);
 
 module.exports = router
