@@ -19,5 +19,13 @@ app.use('/api/guru', gurusRouter);
 app.use('/api/data/event', eventRouter)
 app.use('/api/category', categoryRouter);
 
+console.log('Starting app...');
+console.log(`Node.js version: ${process.version}`);
+console.log(`Current working directory: ${process.cwd()}`);
+
+app.use((req, res, next) => {
+    console.log(`${req.method} ${req.url}`);
+    next();
+  });
 
 app.listen(3000, () => console.log('Server running'))
